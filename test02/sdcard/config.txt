@@ -1,0 +1,3 @@
+arm_64bit=1
+core_freq_min=250
+armstub=armstub8.bin
