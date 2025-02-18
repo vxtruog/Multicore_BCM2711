@@ -1,6 +1,0 @@
-arm_64bit=1
-core_freq_min=250
-armstub=armstub8.bin
-hdmi_group=2
-hdmi_mode=87
-hdmi_cvt 800 480 60 6 0 0 0
