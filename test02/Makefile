@@ -17,11 +17,14 @@ boot.o: boot.S
 io.o: io/io.c io/io.h
 	@$(ARMGNU)-gcc $(INCLUDES) $(GCCFLAGS) -c io/io.c -o io.o
 
+info.o: io/memory_info.c io/register.h
+	@$(ARMGNU)-gcc $(INCLUDES) $(GCCFLAGS) -c io/memory_info.c -o info.o
+
 %.o: %.c
 	@$(ARMGNU)-gcc $(INCLUDES) $(GCCFLAGS) -c $< -o $@
 
 kernel8.img: boot.o io.o $(OFILES)
-	@$(ARMGNU)-ld $(LDFLAGS) boot.o io.o $(OFILES) -o kernel8.elf
+	@$(ARMGNU)-ld $(LDFLAGS) boot.o io.o info.o $(OFILES) -o kernel8.elf
 	@$(ARMGNU)-objcopy $(OBJFLAGS) kernel8.elf kernel8.img
 	@$(ARMGNU)-objdump $(OBJDFLAGS) kernel8.elf > kernel8.elf.lst
 
